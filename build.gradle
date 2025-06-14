@@ -1,13 +1,12 @@
 plugins {
     id 'java'
+    id 'org.jetbrains.kotlin.jvm'
 }
 
 group = 'com.joona'
 version = '1.0.0'
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
 }
 
 repositories {
@@ -17,8 +16,12 @@ repositories {
 dependencies {
     // JUnit 5 (Jupiter)
     testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 }
 
 test {
     useJUnitPlatform()
+}
+kotlin {
+    jvmToolchain(17)
 }
