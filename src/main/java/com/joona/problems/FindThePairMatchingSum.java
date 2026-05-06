@@ -28,13 +28,14 @@ public class FindThePairMatchingSum {
             System.out.println("Array has not enough elements");
             return false;
         }
-        HashSet<Integer> compNumberSet = new HashSet<>();
+        HashSet<Integer> seen = new HashSet<>();
         for (Integer number : numbers) {
-            if (compNumberSet.contains(number)) {
-                System.out.println("Found matching pair : " + number + " & " + (SUM - number));
+            int complement = SUM - number;
+            if (seen.contains(complement)) {
+                System.out.println("Found matching pair : " + number + " & " + complement);
                 return true;
             }
-            compNumberSet.add(SUM - number);
+            seen.add(number);
         }
         System.out.println("NO pairs can match the SUM :  NO");
         return false;
@@ -57,57 +58,7 @@ public class FindThePairMatchingSum {
                 break;
             }
         }
+        sc.close();
         hasMatchingPair(numbers, SUM);
-    }
-
-    private static void method1() {
-        ArrayList<Integer> numbers = new ArrayList();
-        Scanner sc = new Scanner(System.in);
-        int positiveElementsSum = 0;
-        int negativeElementsSum = 0;
-        System.out.println("Input the array elements one by one type done to stop : ");
-        while (true) {
-            String input = sc.next();
-            try {
-                int elementValue = Integer.parseInt(input);
-                numbers.add(elementValue);
-                if (elementValue >= 0) {
-                    positiveElementsSum = positiveElementsSum + elementValue;
-                } else {
-                    negativeElementsSum = negativeElementsSum + elementValue;
-                }
-            } catch (NumberFormatException nfe) {
-                System.out.println("Thanks for providing array elements : " + numbers);
-                break;
-            }
-        }
-        System.out.println("Input the SUM : ");
-        int SUM = sc.nextInt();
-
-        hasThePairMethod2(numbers, SUM, positiveElementsSum, negativeElementsSum);
-    }
-
-    private static void hasThePairMethod2(ArrayList<Integer> numbers, int SUM, int positiveElementsSum, int negativeElementsSum) {
-        if (numbers.isEmpty() || numbers.size() < 2) {
-            System.out.println("Array has not enough elements");
-            return;
-        }
-
-        if ((SUM > 0 && positiveElementsSum < 0) || (SUM < 0 && negativeElementsSum > SUM)) {
-            //no pair can match the sum
-            System.out.println("NO pairs can match the SUM :  NO");
-            return;
-        }
-
-        for (int i = 0; i < numbers.size() - 1; i++) {
-            for (int j = i + 1; j < numbers.size(); j++) {
-                int pairValue = numbers.get(i) + numbers.get(j);
-                if (pairValue == SUM) {
-                    System.out.println("Found matching pair " + numbers.get(i) + " & " + numbers.get(j));
-                    return;
-                }
-            }
-        }
-        System.out.println("NO pairs can match the SUM :  NO");
     }
 }

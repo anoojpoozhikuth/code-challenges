@@ -58,7 +58,7 @@ public class TwoSums {
      *         returns [0, 0] if no valid pair exists or input is invalid
      */
     public int[] findThePairInedxMatchingSum(int[] nums, int target) {
-        Map compMap = new HashMap<Integer, Integer>();
+        Map<Integer, Integer> compMap = new HashMap<Integer, Integer>();
         int[] answer = new int[2];
         if (nums.length < 2) return answer;
         //Adding the first element's  complement number ( ie target - current number) to the map

@@ -32,6 +32,7 @@ public class ArrayUtils {
                 array[i][j] = scanner.nextInt();
             }
         }
+        scanner.close();
         return array;
     }
 
