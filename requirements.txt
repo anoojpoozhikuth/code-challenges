@@ -1,0 +1,13 @@
+# Python project dependencies for code challenges
+
+# Testing frameworks
+pytest>=7.0.0
+pytest-cov>=4.0.0
+
+# Code quality and linting (optional)
+black>=23.0.0
+flake8>=6.0.0
+pylint>=2.0.0
+
+# Type checking (optional)
+mypy>=1.0.0
